@@ -26,6 +26,6 @@ updater.start_webhook(
     listen="0.0.0.0",
     port=PORT,
     url_path=TOKEN,
-    webhook_url=f"https://nechat-bot-test.herokuapp.com/{TOKEN}"
+    webhook_url=f"https://mks-todo-bot.herokuapp.com/{TOKEN}"
 )
 updater.idle()
