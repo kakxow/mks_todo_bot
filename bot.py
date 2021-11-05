@@ -21,4 +21,9 @@ dispatcher.add_handler(commands.start)
 dispatcher.add_handler(commands.mark_complete)
 dispatcher.add_handler(commands.unmark_complete)
 
-updater.start_polling()
+updater.start_webhook(
+    listen="0.0.0.0",
+    port=8443,
+    url_path=TOKEN,
+    webhook_url="https://mks-todo-bot.herokuapp.com/" + TOKEN
+)
