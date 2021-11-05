@@ -25,5 +25,6 @@ dispatcher.add_handler(commands.unmark_complete)
 updater.start_webhook(
     listen="0.0.0.0",
     port=PORT,
-    url_path=TOKEN
+    url_path=TOKEN,
+    webhook_url=f"https://nechat-bot-test.herokuapp.com/{TOKEN}"
 )
