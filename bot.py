@@ -10,6 +10,7 @@ import commands
 load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 LOGGING_LEVEL = int(os.getenv("LOGGING_LEVEL", logging.INFO))
+PORT = int(os.getenv("PORT", 8443))
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=LOGGING_LEVEL
 )
@@ -21,4 +22,10 @@ dispatcher.add_handler(commands.start)
 dispatcher.add_handler(commands.mark_complete)
 dispatcher.add_handler(commands.unmark_complete)
 
-updater.start_polling()
+updater.start_webhook(
+    listen="0.0.0.0",
+    port=PORT,
+    url_path=TOKEN,
+    webhook_url=f"https://nechat-bot-test.herokuapp.com/{TOKEN}"
+)
+updater.idle()
