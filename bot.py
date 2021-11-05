@@ -28,3 +28,4 @@ updater.start_webhook(
     url_path=TOKEN,
     webhook_url=f"https://nechat-bot-test.herokuapp.com/{TOKEN}"
 )
+updater.idle()
