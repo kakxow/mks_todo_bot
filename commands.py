@@ -1,7 +1,7 @@
 import telegram
 from telegram.ext import MessageHandler, Filters
 from telegram.ext.callbackqueryhandler import CallbackQueryHandler
-from telegram.helpers import escape_markdown
+from telegram.utils.helpers import escape_markdown
 
 
 inline_keyboard_markup_mark_complete = {
@@ -29,7 +29,7 @@ inline_keyboard_markup_unmark_complete = {
 def _mark_complete(update, context):
     text = update.effective_message.text
     if text:
-        new_text = escape_markdown(f"~{text}~", version=2)
+        new_text = f"~{escape_markdown(text, version=2)}~"
         context.bot.editMessageText(
             chat_id=update.effective_chat.id,
             message_id=update.effective_message.message_id,
